@@ -70,12 +70,14 @@ export const Calculator = () => {
       return;
     }
     const newValue = parseFloat(displayValue) * -1;
-    if (newValue < 0) {
-      setDisplayValue('ERROR');
+    const stringValue = String(newValue);
+    if (stringValue.length <= 9) {
+      setDisplayValue(stringValue);
     } else {
-      setDisplayValue(String(newValue));
+      setDisplayValue('ERROR');
     }
   };
+  
 
   const clearAll = () => {
     setDisplayValue('0');
@@ -138,5 +140,4 @@ export const Calculator = () => {
   );
 };
 
-// Export inputDigit for testing
 export { inputDigit };

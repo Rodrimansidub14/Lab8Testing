@@ -1,4 +1,4 @@
-import React from 'react'; // Asegúrate de importar React
+import React from 'react'; 
 import { inputDigit, performCalculation } from '../Calculator';
 
 test('adds 1 + 2 to equal 3', () => {
@@ -29,12 +29,10 @@ test('displays ERROR for negative results', () => {
 });
 
 test('inputDigit limits display value to 9 characters', () => {
-  // Mock the useState hook
   const setDisplayValue = jest.fn();
   const useStateMock = (initState) => [initState, setDisplayValue];
   jest.spyOn(React, 'useState').mockImplementation(useStateMock);
 
-  // Input a series of digits
   inputDigit(1, '0', setDisplayValue, false, jest.fn());
   inputDigit(2, '1', setDisplayValue, false, jest.fn());
   inputDigit(3, '12', setDisplayValue, false, jest.fn());
@@ -44,7 +42,7 @@ test('inputDigit limits display value to 9 characters', () => {
   inputDigit(7, '123456', setDisplayValue, false, jest.fn());
   inputDigit(8, '1234567', setDisplayValue, false, jest.fn());
   inputDigit(9, '12345678', setDisplayValue, false, jest.fn());
-  inputDigit(0, '123456789', setDisplayValue, false, jest.fn()); // This should not be accepted
+  inputDigit(0, '123456789', setDisplayValue, false, jest.fn()); 
 
-  expect(setDisplayValue).toHaveBeenCalledTimes(9); // Should be called only 9 times
+  expect(setDisplayValue).toHaveBeenCalledTimes(9);
 });
